@@ -48,7 +48,6 @@ echo "$password" | sudo -S yum install -y util-linux-user # chshを使うため�
 username=`whoami`
 # 「ログインシェルをzshに変更する」を 格納した $password を使って sudo で実行
 echo "$password" | sudo -S chsh --shell `which zsh` "$username"
-./chsh.sh
 
 
 echo "To install dotfiles is Success!"
