@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # 実行時のカレントディレクトリに関わらずこのファイルのあるディレクトリを得る
 SCRIPT_DIR=$(cd $(dirname $0); pwd)

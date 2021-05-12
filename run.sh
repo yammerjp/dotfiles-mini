@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # root ではない
 # sudo 使える

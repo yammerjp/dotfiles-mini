@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # パスワードを $password 変数に格納する
 printf "password: "
