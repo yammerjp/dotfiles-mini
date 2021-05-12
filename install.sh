@@ -10,3 +10,4 @@ echo "$password" | sudo -S yum install -y tmux
 echo "$password" | sudo -S yum install -y zsh
 echo "$password" | sudo -S yum install -y vim
 echo "$password" | sudo -S yum install -y make
+echo "$password" | sudo -S yum install -y util-linux-user # chshを使うために必要
