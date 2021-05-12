@@ -11,5 +11,5 @@ git clone https://github.com/yammerjp/dotfiles-mini.git
 cd dotfiles-mini
 
 ./link.sh
-./yum-install.sh
-./change-to-zsh.sh
+./install.sh
+./chsh.sh
