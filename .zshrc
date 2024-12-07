@@ -67,6 +67,9 @@ setopt hist_ignore_space
 alias his="history -i -t '%Y/%m/%d-%H:%M'"
 alias his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
 alias hisall="his-all"
+alias mysqldef-dump="mysqldef --user=isuconp --password=isuconp isuconp --export > schema.sql"
+alias mysqldef-dryrun="cat schema.sql | mysqldef --user=isuconp --password=isuconp isuconp --dry-run"
+alias mysqldef-realrun="cat schema.sql | mysqldef --user=isuconp --password=isuconp isuconp"
 
 # shellのhistory一覧
 function select-history() {
