@@ -59,39 +59,28 @@ setopt hist_verify
 setopt hist_reduce_blanks
 # historyコマンドは履歴に登録しない
 setopt hist_no_store
+# 空白で始まるコマンドは履歴に登録しない
+setopt hist_ignore_space
 
 alias his="history -i -t '%Y/%m/%d-%H:%M'"
 alias his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
 alias hisall="his-all"
 
-hispeco_ctrl_h () {
-  if ! which peco; then
-    echo 'peco is not installed'
-    return 1
-  fi
-  if [[ ${OSTYPE} = 'darwin'* ]]; then
-    cmd=$(his-all | tail -r | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')
-  else
-    cmd=$(his-all | tac | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')
-  fi
-  BUFFER="$cmd"
+# shellのhistory一覧
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --height 50% --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
-  zle redisplay
 }
-zle -N hispeco_ctrl_h
-bindkey '^h' hispeco_ctrl_h
+zle -N select-history
+bindkey '^t' select-history
 
-hispeco() {
-  if ! which peco; then
-    echo 'peco is not installed'
-    return 1
-  fi
-  if [[ ${OSTYPE} = 'darwin'* ]]; then
-    print -z "$(his-all | tail -r | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')"
-  else
-    print -z "$(his-all | tac | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')"
-  fi
+# shellのhistory一覧
+function select-history-perfect-matching() {
+  BUFFER=$(history -n -r 1 | fzf -e --no-sort +m --height 50% --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
 }
+zle -N select-history-perfect-matching
+bindkey '^r' select-history-perfect-matching
 
 
 
