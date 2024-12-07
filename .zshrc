@@ -1,5 +1,9 @@
 #=================================alias===================================
-alias g=git
+if [ ! -f ~/.gitconfig.yammerjp ] ; then
+    curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/refs/heads/main/.config/git/config -o ~/.gitconfig.yammerjp
+fi
+alias g="/usr/bin/git -c include.path=~/.gitconfig.yammerjp"
+alias git="/usr/bin/git -c include.path=~/.gitconfig.yammerjp"
 #=================================補完====================================
 # キーバインドをviにする
 bindkey -v
