@@ -4,6 +4,11 @@ if [ ! -f ~/.gitconfig.yammerjp ] ; then
 fi
 alias g="/usr/bin/git -c include.path=~/.gitconfig.yammerjp"
 alias git="/usr/bin/git -c include.path=~/.gitconfig.yammerjp"
+
+function isucrud-run() {
+    go install github.com/mazrean/isucrud@latest
+    ~/go/bin/isucrud -dst iscrud.md
+}
 #=================================補完====================================
 # キーバインドをviにする
 bindkey -v
